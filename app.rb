@@ -28,27 +28,37 @@ post '/callback' do
             when Line::Bot::Event::Message
                 case event.type
                 when Line::Bot::Event::MessageType::Text
-                    message = {
-                      type: 'text',
-                      text: "だからヨハネよッ！"
-                    }
                     # message = {
-                    #     "type": "template",
-                    #     "altText": "Aqours2ndLive",
-                    #     "template": {
-                    #         "type": "buttons",
-                    #         "thumbnailImageUrl": "http://www.lovelive-anime.jp/uranohoshi/img/special/2ndlive/2ndlivelogo.png",
-                    #         "title": "Aqours",
-                    #         "text": "Please select",
-                    #         "actions": [
-                    #             {
-                    #                 "type": "uri",
-                    #                 "label": "詳細を見る",
-                    #                 "uri": "http://www.lovelive-anime.jp/uranohoshi/sp_2ndlive.php"
-                    #             }
-                    #         ]
-                    #     }
+                    #   type: 'text',
+                    #   text: "だからヨハネよッ！"
                     # }
+                    message = {
+                        "type": "template",
+                        "altText": "this is a buttons template",
+                        "template": {
+                            "type": "buttons",
+                            "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+                            "title": "Menu",
+                            "text": "Please select",
+                            "actions": [
+                                {
+                                    "type": "postback",
+                                    "label": "Buy",
+                                    "data": "action=buy&itemid=123"
+                                },
+                                {
+                                    "type": "postback",
+                                    "label": "Add to cart",
+                                    "data": "action=add&itemid=123"
+                                },
+                                {
+                                    "type": "uri",
+                                    "label": "View detail",
+                                    "uri": "http://example.com/page/123"
+                                }
+                            ]
+                        }
+                    }
                     # message = {
                     #     "type": "template",
                     #     "altText": "this is a buttons template",
